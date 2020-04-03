@@ -1,61 +1,82 @@
-[readme-lhs](https://tonyday567.github.io/readme-lhs/index.html) [![Build Status](https://travis-ci.org/tonyday567/readme-lhs.svg)](https://travis-ci.org/tonyday567/readme-lhs)
+[quilt](https://github.com/tonyday567/quilt) [![Build Status](https://travis-ci.org/tonyday567/quilt.svg)](https://travis-ci.org/tonyday567/quilt)
 ================================================================================================================================================================================
 
-<blockquote cite>
-The language in which we express our ideas has a strong influence on our
-thought processes. Knuth
-</blockquote>
+This is where and how I go about a haskell library refactor. I pick a new ghc version, and a new stack lts, and set this project up with no compile warts.  Each addition adds a constellation of libraries I use, and a logic compilation milepegs.
 
-This is how I start a new haskell library refactor. I pick a new ghc version, and a new stack lts, and set this project up with no compile warts.  This gives me the full pandoc tree, which is a great base to get a fast workflow loop going for the repo you've created.
+[readme-lhs](https://github.com/tonyday567/readme-lhs)
+---
 
-
-example
+This is a thin wrap around protolude and pandoc, containing much loved functionality. This sets Text as a major primitive type.
 
 ``` {.output .example}
 ```
 
-NumHask.Space
+[numhask-space](https://github.com/tonyday567/numhask-space)
+---
+
+Some concrete geometry.
 
 ``` {.output .NumHask.Space}
 ```
 
-NumHask.Array
+[numhask-array](https://github.com/tonyday567/numhask-array)
+---
+
+n-dimensional arrays
 
 ``` {.output .NumHask.Array}
 ```
 
+[box](https://github.com/tonyday567/box)
+---
 
-Box
+A profunctor with STM queues at each end.
 
 ``` {.output .Box}
 ```
 
+[web-rep](https://github.com/tonyday567/web-rep)
+---
 
-web-rep
+Representations of web pages.
 
 ``` {.output .web-rep}
 ```
 
-chart-svg
+[chart-svg](https://github.com/tonyday567/chart-svg)
+---
+
+Numerical charts in svg.
 
 ``` {.output .chart-svg}
 ```
 
+[perf](https://github.com/tonyday567/perf)
+---
 
+low-level performance stats
 
+``` {.output .perf}
+```
 
+Inner array loop for numhask-array.
 
+``` {.output .inner}
+```
 
+[online](https://github.com/tonyday567/online)
+---
 
+rolling statistics
 
-template
-========
+``` {.output .online}
+```
 
-A bare bones stack template is located in
-[other/readme-lhs.hsfiles](other/readme-lhs.hsfiles). It contains what
-you need to quickly get started with literate programming.
+[online-market](https://github.com/tonyday567/online-market/blob/master/runs/default/index.html)
+---
+
 
 workflow
---------
+---
 
-    stack build --test --exec "$(stack path --local-install-root)/bin/batteries" --file-watch
+    stack build --test --exec "$(stack path --local-install-root)/bin/quilt" --file-watch

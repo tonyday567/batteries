@@ -1,4 +1,4 @@
-name: batteries
+name: quilt
 version: 0.0.0.1
 synopsis: See readme.md
 description: See readme.md for description.
@@ -8,17 +8,17 @@ author: Tony Day
 maintainer: tonyday567@gmail.com
 copyright: Tony Day (c) 2017
 license: BSD3
-homepage: https://github.com/tonyday567/batteries#readme
-bug-reports: https://github.com/tonyday567/batteries/issues
+homepage: https://github.com/tonyday567/quilt#readme
+bug-reports: https://github.com/tonyday567/quilt/issues
 build-type: Simple
 extra-source-files:
   readme.md
 source-repository head
   type: git
-  location: https://github.com/tonyday567/batteries
+  location: https://github.com/tonyday567/quilt
 
-executable batteries
-  main-is: batteries.hs
+executable quilt
+  main-is: quilt.hs
   hs-source-dirs: .
   default-extensions:
     NegativeLiterals
@@ -45,4 +45,11 @@ executable batteries
     , blaze-html
     , lucid
     , text
+    , perf
+    , perf-analysis
+    , foldl
+    , lens
+    , online
+    , online-market
+
  default-language: Haskell2010
