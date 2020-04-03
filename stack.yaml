@@ -1,0 +1,19 @@
+resolver: lts-15.6
+
+packages:
+  - .
+  - ../readme-lhs
+
+extra-deps:
+  # - readme-lhs-0.4.0
+  - numhask-space-0.3.1
+  - numhask-array-0.5.1
+  - numhask-prelude-0.3.3
+  - box-0.2.0
+  - web-rep-0.3.1
+  - chart-svg-0.0.1
+  - javascript-bridge-0.2.0
+  - lucid-svg-0.7.1
+  - palette-0.3.0.2
+  - text-format-0.3.2
+  - interpolatedstring-perl6-1.0.2
