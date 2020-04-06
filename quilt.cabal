@@ -51,5 +51,6 @@ executable quilt
     , lens
     , online
     , online-market
+    , time
 
  default-language: Haskell2010

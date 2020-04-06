@@ -1,34 +1,79 @@
-[quilt](https://github.com/tonyday567/quilt) [![Build Status](https://travis-ci.org/tonyday567/quilt.svg)](https://travis-ci.org/tonyday567/quilt)
-==================================================================================================================================================================
++++
+date = "2020-03-09"
+title = "A haskell quilt"
++++
 
-This is where and how I go about a haskell library refactor. I pick a
-new ghc version, and a new stack lts, and set this project up with no
-compile warts. Each addition adds a constellation of libraries I use,
-and a logic compilation milepegs.
+[quilt](https://github.com/tonyday567/quilt) [![Build Status](https://travis-ci.org/tonyday567/quilt.svg)](https://travis-ci.org/tonyday567/quilt)
+==================================================================================================================================================
+
+> True greatness is measured by how much freedom you give to others, not
+> by how much you can coerce others to do what you want. \~ Larry Wall
+
+This is a patchwork quilt of all my favorite libraries I like to keep up
+to date with ghc.
+
+[numhask-prelude](https://hackage.haskell.org/package/numhask-prelude)
+----------------------------------------------------------------------
+
+There are many preludes, but this one is mine. Choosing a numeric api
+using tight classes and wrapping protolude, a minimalist prelude.
+
+This is what you get with the `readme-lhs` stack template.
 
 [readme-lhs](https://github.com/tonyday567/readme-lhs)
 ------------------------------------------------------
 
-This is a thin wrap around protolude and pandoc, containing much loved
-functionality. This sets Text as a major primitive type.
+readme-lhs is a wrapper around pandoc that gives me a one-way write
+channel into a markdown file.
+
+1.  Add code blocks to markdown files
+
+<!-- -->
+
+        ``` {.output .example}
+        ```
+
+1.  Use the runOutput monad.
+
+``` {.haskell}
+void $ runOutput ("other/readme_.md", GitHubMarkdown) ("readme.md", GitHubMarkdown) $ do
+    output "example" (Fence "Simple example of an output")
+```
+
+1.  To produce this:
 
 ``` {.output .example}
 Simple example of an output
 ```
 
+1.  Put this in a stack loop like:
+
+<!-- -->
+
+    stack build --test --exec "$(stack path --local-install-root)/bin/quilt" --file-watch
+
+1.  Pipe the written markdown files to upstream processes like blogging
+    and logging.
+
+If you code in haskell you really should use the native
+[pandoc](https://hackage.haskell.org/package/pandoc) api for text-based
+output.
+
 [numhask-space](https://github.com/tonyday567/numhask-space)
 ------------------------------------------------------------
 
-Some concrete geometry.
+Provides all sorts of spaces, ranges and grids. The api is general over
+a wide range of numbers including times, which can be tricky with
+boundary finding. The next 500 days, marked with sensible date
+milestones:
 
-``` {.output .NumHask.Space}
-[0.0,4.0,8.0,12.0,16.0,20.0,24.0,28.0,32.0,36.0,40.0,44.0,48.0,52.0,56.0,60.0,64.0]
-```
+![](other/timespace.svg)
 
 [numhask-array](https://github.com/tonyday567/numhask-array)
 ------------------------------------------------------------
 
-n-dimensional arrays
+numhask-array is an n-dimensional array library I'm extremely proud of,
+and love using.
 
 ``` {.output .NumHask.Array}
 [[14.0, 32.0],
@@ -38,7 +83,7 @@ n-dimensional arrays
 [box](https://github.com/tonyday567/box)
 ----------------------------------------
 
-A profunctor with STM queues at each end.
+A profunctor with queues at each end.
 
 echo: hi
 
@@ -47,7 +92,8 @@ echo: bye
 [web-rep](https://github.com/tonyday567/web-rep)
 ------------------------------------------------
 
-Representations of web pages.
+This brings in lens, javascript, clay, lucid and scotty, and provides
+representations of web pages.
 
 ``` {.output .web-rep}
 <!DOCTYPE HTML><html lang="en"><head><meta charset="utf-8"></head><body><script>window.onload=function(){}</script></body></html>
@@ -56,7 +102,7 @@ Representations of web pages.
 [chart-svg](https://github.com/tonyday567/chart-svg)
 ----------------------------------------------------
 
-Numerical charts in svg.
+Numerical charts targetting svg as the backend.
 
 ![](other/chart-svg.svg)
 
@@ -71,7 +117,7 @@ Inner array loop for numhask-array.
 
 | run                 |     100|        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
 |:--------------------|-------:|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
-| NumHask.Array.Fixed |  1.02e7| 2.33e6 | 8.25e6 | 1.64e6 | 2.92e6 | 2.35e6 | 8.18e6 | 1.51e6 | 1.43e6 | 2.52e6 | 2.09e6 | 8.16e6 | 1.28e6 | 2.56e6 | 2.87e6 | 7.77e6 | 1.20e6 | 2.46e6 | 2.92e6 | 8.58e6 | 1.07e6 | 2.34e6 | 2.81e6 | 8.71e6 | 9.41e5 | 2.25e6 | 8.35e6 | 2.03e6 | 1.75e6 | 2.02e6 | 2.61e6 | 8.43e6 | 1.81e6 | 2.04e6 | 8.13e6 | 1.78e6 | 1.65e6 | 2.88e6 | 8.02e6 | 1.66e6 | 1.54e6 | 1.46e6 | 2.59e6 | 2.00e6 | 8.23e6 | 1.44e6 | 2.69e6 | 2.04e6 | 8.02e6 | 1.29e6 | 2.61e6 | 8.70e6 | 1.27e6 | 1.12e6 | 2.46e6 | 8.63e6 | 2.11e6 | 9.08e5 | 2.31e6 | 2.83e6 | 8.66e6 | 1.02e6 | 2.21e6 | 8.32e6 | 2.04e6 | 1.78e6 | 2.06e6 | 2.57e6 | 8.43e6 | 1.81e6 | 1.57e6 | 1.75e6 | 2.32e6 | 8.50e6 | 1.65e6 | 1.84e6 | 2.21e6 | 8.12e6 | 1.54e6 | 2.71e6 | 7.99e6 | 1.53e6 | 1.39e6 | 2.70e6 | 3.01e6 | 7.74e6 | 1.28e6 | 2.61e6 | 8.73e6 | 1.39e6 | 1.13e6 | 2.40e6 | 2.95e6 | 8.64e6 | 1.00e6 | 2.43e6 | 2.82e6 | 8.16e6 | 1.89e6 | 7.35e5 |
+| NumHask.Array.Fixed |  1.01e7| 7.71e6 | 1.81e6 | 1.61e6 | 1.58e6 | 1.70e6 | 2.18e6 | 1.50e6 | 1.44e6 | 2.64e6 | 7.50e6 | 1.41e6 | 1.34e6 | 2.62e6 | 2.88e6 | 7.36e6 | 1.21e6 | 2.57e6 | 2.89e6 | 7.36e6 | 1.13e6 | 2.41e6 | 8.17e6 | 2.11e6 | 9.17e5 | 2.33e6 | 2.79e6 | 8.14e6 | 1.79e6 | 2.09e6 | 7.92e6 | 2.11e6 | 2.02e6 | 2.59e6 | 8.55e6 | 3.67e6 | 1.86e6 | 1.61e6 | 1.82e6 | 2.28e6 | 8.06e6 | 1.61e6 | 2.70e6 | 2.08e6 | 7.60e6 | 1.47e6 | 2.78e6 | 7.70e6 | 1.43e6 | 1.30e6 | 2.74e6 | 8.32e6 | 1.28e6 | 1.21e6 | 2.55e6 | 3.01e6 | 8.22e6 | 9.81e5 | 2.39e6 | 8.11e6 | 2.17e6 | 1.01e6 | 2.29e6 | 2.76e6 | 8.42e6 | 1.90e6 | 7.54e5 | 2.05e6 | 2.57e6 | 8.30e6 | 1.25e6 | 1.84e6 | 2.41e6 | 7.89e6 | 1.67e6 | 1.93e6 | 7.85e6 | 1.65e6 | 1.58e6 | 2.77e6 | 2.20e6 | 7.65e6 | 1.48e6 | 2.77e6 | 7.50e6 | 1.36e6 | 1.29e6 | 2.64e6 | 3.13e6 | 7.56e6 | 1.27e6 | 2.56e6 | 3.03e6 | 8.28e6 | 1.05e6 | 1.04e6 | 2.27e6 | 2.84e6 | 7.64e6 | 9.12e5 |
 
 [online](https://github.com/tonyday567/online)
 ----------------------------------------------
@@ -82,6 +128,19 @@ rolling statistics
 
 [online-market](https://github.com/tonyday567/online-market/blob/master/runs/default/index.html)
 ------------------------------------------------------------------------------------------------
+
+global installs
+---------------
+
+-   hoogle
+-   hie
+-   hie-wrapper
+-   hlint
+-   weeder
+-   ormolu
+-   ghcid
+-   haddock
+-   pandoc
 
 workflow
 --------
