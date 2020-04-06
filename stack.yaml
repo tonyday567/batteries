@@ -29,3 +29,5 @@ extra-deps:
     commit: 5b1d7fe0a6ed6451aea844f74d543e67cdc2eb11
   - streaming-utils-0.2.0.0@sha256:a2bd9144b336393122ffed2d3a1c747c186b8fdb9734c54d8b5874ed6166a85b
   - json-stream-0.4.2.4@sha256:8b7f17d54a6e1e6311756270f8bcf51e91bab4300945400de66118470dcf51b9
+
+allow-newer: true
