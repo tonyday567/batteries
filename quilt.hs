@@ -25,7 +25,6 @@ import qualified NumHask.Array.Fixed as F
 import NumHask.Prelude
 import Online
 import Perf
-import Perf.Analysis
 import Readme.Lhs
 import qualified Streaming.Prelude as S
 import Web.Page
@@ -39,23 +38,6 @@ testBox xs = do
   (_, c, res) <- cCRef
   let e = toEmit (S.each xs)
   pure (Box <$> c <*> e, res)
-
--- | format a run median
-formatMedian :: Text -> [[Cycle]] -> [Text]
-formatMedian t xss =
-  [t]
-    <> (formatF 2 . percentile 0.5 <$> xss)
-
-formatRunsMedian :: [Text] -> [(Text, [[Cycle]])] -> Block
-formatRunsMedian h rs =
-  table
-    mempty
-    (["run"] <> h)
-    ([AlignLeft] <> replicate n AlignRight)
-    []
-    (fmap (uncurry formatMedian) rs)
-  where
-    n = length h
 
 dot100 :: IO [[Cycle]]
 dot100 = do
@@ -91,10 +73,20 @@ main = do
   let transducer' = Transducer $ \s -> s & S.takeWhile (/= "q") & S.map ("echo: " <>)
   _ <- etc () transducer' box'
   res <- res'
+
+  -- chart-svg
   writeChartExample "other/chart-svg.svg" lineExample
+
+  -- perf chart
   r100 <- dot100
-  let perfExample xs = makeExample defaultHudOptions [Chart (GlyphA defaultGlyphStyle) (zipWith SP (fromIntegral <$> [0 .. (length xs - 1)]) xs)]
-  writeChartExample "other/perf.svg" (perfExample (fromIntegral . sum <$> r100))
+  writeHudOptionsChart
+    "other/perf.svg"
+    defaultSvgOptions
+    defaultHudOptions
+    []
+    (zipWith (\c ts -> Chart (LineA (defaultLineStyle & #color .~ c)) $ zipWith SP [0..] (fromIntegral <$> ts)) chartPalette r100)
+
+  -- online chart
   let lss = take 3 $ (\x -> defaultLineStyle & #color .~ x) <$> chartPalette
   let xss = drop 2 . L.scan (ma 0.999) . fmap fromIntegral <$> r100
   let maExample =
@@ -106,6 +98,8 @@ main = do
               lss
           )
   writeChartExample "other/online.svg" maExample
+
+  -- timespace chart
   dts <- makeDateTicks 8 500
   writeHudOptionsChart
     "other/timespace.svg"
@@ -139,12 +133,6 @@ main = do
     output
       "perf"
       (Native $ ((: []) . Plain . (: [])) (image "" "other/perf.svg"))
-    output "inner" $
-      Native
-        [ formatRunsMedian
-            ["100"]
-            (zip ["NumHask.Array.Fixed", "NumHask.Array.Dynamic", "vector"] [NumHask.Prelude.transpose r100])
-        ]
     output
       "online"
       (Native $ ((: []) . Plain . (: [])) (image "" "other/online.svg"))

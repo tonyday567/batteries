@@ -1,24 +1,22 @@
-+++
-date = "2020-03-09"
-title = "A haskell quilt"
-+++
-
 [quilt](https://github.com/tonyday567/quilt) [![Build Status](https://travis-ci.org/tonyday567/quilt.svg)](https://travis-ci.org/tonyday567/quilt)
 ==================================================================================================================================================
+
+The above link is a haskell library that I am using to upgrade to
+lts-15.6 and ghc-8.8.3. If the light is green, then I'm where I want to
+be.
 
 > True greatness is measured by how much freedom you give to others, not
 > by how much you can coerce others to do what you want. \~ Larry Wall
 
-This is a patchwork quilt of all my favorite libraries I like to keep up
-to date with ghc.
-
 [numhask-prelude](https://hackage.haskell.org/package/numhask-prelude)
 ----------------------------------------------------------------------
 
-There are many preludes, but this one is mine. Choosing a numeric api
-using tight classes and wrapping protolude, a minimalist prelude.
+This is where I start. `numhask-prelude` brings in core libraries, and
+sets up numeric and Text channels.
 
-This is what you get with the `readme-lhs` stack template.
+This is also what you get with the
+[readme-lhs](https://github.com/tonyday567/readme-lhs/blob/master/other/readme-lhs.hsfiles)
+stack template.
 
 [readme-lhs](https://github.com/tonyday567/readme-lhs)
 ------------------------------------------------------
@@ -26,38 +24,38 @@ This is what you get with the `readme-lhs` stack template.
 readme-lhs is a wrapper around pandoc that gives me a one-way write
 channel into a markdown file.
 
-1.  Add code blocks to markdown files
+-   Add code blocks to markdown files that looks something like this:
 
-<!-- -->
+          ``` {.output .example}
+          ```
 
-        ``` {.output .example}
-        ```
-
-1.  Use the runOutput monad.
+-   Use Readme.Lhs.runOutput to insert output, like this:
 
 ``` {.haskell}
 void $ runOutput ("other/readme_.md", GitHubMarkdown) ("readme.md", GitHubMarkdown) $ do
     output "example" (Fence "Simple example of an output")
 ```
 
-1.  To produce this:
+-   And produce this:
 
 ``` {.output .example}
 Simple example of an output
 ```
 
-1.  Put this in a stack loop like:
+-   Put this in a stack loop like this:
 
 <!-- -->
 
     stack build --test --exec "$(stack path --local-install-root)/bin/quilt" --file-watch
 
-1.  Pipe the written markdown files to upstream processes like blogging
-    and logging.
+-   Pipe the markdown file somewhere to render it, and you have a very
+    tight workflow.
 
-If you code in haskell you really should use the native
-[pandoc](https://hackage.haskell.org/package/pandoc) api for text-based
-output.
+-   Use Pandoc Native
+
+    -   If you code in haskell use the native
+        [pandoc](https://hackage.haskell.org/package/pandoc) api for
+        output, and if you can't convert, it shouldn't exist.
 
 [numhask-space](https://github.com/tonyday567/numhask-space)
 ------------------------------------------------------------
@@ -72,13 +70,29 @@ milestones:
 [numhask-array](https://github.com/tonyday567/numhask-array)
 ------------------------------------------------------------
 
-numhask-array is an n-dimensional array library I'm extremely proud of,
-and love using.
+numhask-array is an n-dimensional array library I'm extremely proud of.
+Matrix multiplication is expressed like so:
+
+    let b :: Array '[2, 3] Double = fromList [1 .. 6]
+    dot sum (*) b (F.transpose b)
 
 ``` {.output .NumHask.Array}
 [[14.0, 32.0],
  [32.0, 77.0]]
 ```
+
+It is rare to see matrix multiplication abstracted in this way, with an
+exposed binary operator and then an exposed fold operation. APL comes to
+mind but none of the numeric inclined fashions.
+
+And when, in haskell, you can make something like this polymorphic, ghc
+can work miracles behind the scenes. This next example looks for vector
+matches within a matrix
+
+    -- >>> let cs = fromList ("abacbaab" :: [Char]) :: Array '[4,2] Char
+    -- >>> let v = fromList ("ab" :: [Char]) :: Vector 2 Char
+    -- >>> dot (all id) (==) cs v
+    -- [True, False, False, True]
 
 [box](https://github.com/tonyday567/box)
 ----------------------------------------
@@ -106,18 +120,43 @@ Numerical charts targetting svg as the backend.
 
 ![](other/chart-svg.svg)
 
+global installs
+---------------
+
+In order:
+
+-   hoogle
+-   haddock
+-   weeder
+-   hlint
+-   ormolu
+-   hie
+-   hie-wrapper
+-   ghcid
+-   pandoc
+
+GUI
+---
+
+With a pristine install, hie works out of the box with spacemacs.
+
+    (haskell
+          :variables
+          haskell-completion-backend 'lsp
+          haskell-process-suggest-remove-import-lines nil
+          lsp-haskell-process-path-hie "hie-wrapper"
+          )
+
+This seems to help everything along:
+
+    stack haddock --keep-going
+
 [perf](https://github.com/tonyday567/perf)
 ------------------------------------------
 
 low-level performance stats
 
 ![](other/perf.svg)
-
-Inner array loop for numhask-array.
-
-| run                 |     100|        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |        |
-|:--------------------|-------:|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
-| NumHask.Array.Fixed |  1.01e7| 7.71e6 | 1.81e6 | 1.61e6 | 1.58e6 | 1.70e6 | 2.18e6 | 1.50e6 | 1.44e6 | 2.64e6 | 7.50e6 | 1.41e6 | 1.34e6 | 2.62e6 | 2.88e6 | 7.36e6 | 1.21e6 | 2.57e6 | 2.89e6 | 7.36e6 | 1.13e6 | 2.41e6 | 8.17e6 | 2.11e6 | 9.17e5 | 2.33e6 | 2.79e6 | 8.14e6 | 1.79e6 | 2.09e6 | 7.92e6 | 2.11e6 | 2.02e6 | 2.59e6 | 8.55e6 | 3.67e6 | 1.86e6 | 1.61e6 | 1.82e6 | 2.28e6 | 8.06e6 | 1.61e6 | 2.70e6 | 2.08e6 | 7.60e6 | 1.47e6 | 2.78e6 | 7.70e6 | 1.43e6 | 1.30e6 | 2.74e6 | 8.32e6 | 1.28e6 | 1.21e6 | 2.55e6 | 3.01e6 | 8.22e6 | 9.81e5 | 2.39e6 | 8.11e6 | 2.17e6 | 1.01e6 | 2.29e6 | 2.76e6 | 8.42e6 | 1.90e6 | 7.54e5 | 2.05e6 | 2.57e6 | 8.30e6 | 1.25e6 | 1.84e6 | 2.41e6 | 7.89e6 | 1.67e6 | 1.93e6 | 7.85e6 | 1.65e6 | 1.58e6 | 2.77e6 | 2.20e6 | 7.65e6 | 1.48e6 | 2.77e6 | 7.50e6 | 1.36e6 | 1.29e6 | 2.64e6 | 3.13e6 | 7.56e6 | 1.27e6 | 2.56e6 | 3.03e6 | 8.28e6 | 1.05e6 | 1.04e6 | 2.27e6 | 2.84e6 | 7.64e6 | 9.12e5 |
 
 [online](https://github.com/tonyday567/online)
 ----------------------------------------------
@@ -126,23 +165,50 @@ rolling statistics
 
 ![](other/online.svg)
 
-[online-market](https://github.com/tonyday567/online-market/blob/master/runs/default/index.html)
-------------------------------------------------------------------------------------------------
+My active projects.
+===================
 
-global installs
----------------
+[online-market](https://github.com/tonyday567/online-market)
+------------------------------------------------------------
 
--   hoogle
--   hie
--   hie-wrapper
--   hlint
--   weeder
--   ormolu
--   ghcid
--   haddock
--   pandoc
+[online-covid](https://github.com/tonyday567/online-covid)
+----------------------------------------------------------
 
 workflow
 --------
 
     stack build --test --exec "$(stack path --local-install-root)/bin/quilt" --file-watch
+
+I build up in order, and, the resulting patchwork is:
+
+    resolver: lts-15.6
+
+    packages:
+      - .
+
+    extra-deps:
+      - backprop-0.2.6.3
+      - box-0.2.0
+      - chart-svg-0.0.1
+      - interpolatedstring-perl6-1.0.2
+      - javascript-bridge-0.2.0
+      - lucid-svg-0.7.1
+      - numhask-array-0.5.1
+      - numhask-prelude-0.3.3
+      - numhask-space-0.3.1
+      - online-0.4.0.0
+      - palette-0.3.0.2
+      - perf-0.5.0.0
+      - perf-analysis-0.2.0.0
+      - readme-lhs-0.5.0
+      - tdigest-0.2.1
+      - text-format-0.3.2
+      - web-rep-0.3.1
+      - git: https://github.com/tonyday567/online-market.git
+        commit: 5e3571de84cdf31d3acc8f7eff7a527e04baf47a
+      - monad-bayes-0.1.0.0@sha256:7ac7ef909cdf8247754e557172e8fd1047c413bdb9dca5153a3fbe33676112b8
+      - vinyl-0.12.1@sha256:03f5e246fae2434250987bbfe708015dc6e23f60c20739c34738acde1383b96c
+      - git: https://github.com/tonyday567/pmlb
+        commit: 5b1d7fe0a6ed6451aea844f74d543e67cdc2eb11
+      - streaming-utils-0.2.0.0@sha256:a2bd9144b336393122ffed2d3a1c747c186b8fdb9734c54d8b5874ed6166a85b
+      - json-stream-0.4.2.4@sha256:8b7f17d54a6e1e6311756270f8bcf51e91bab4300945400de66118470dcf51b9

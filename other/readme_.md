@@ -1,59 +1,63 @@
 [quilt](https://github.com/tonyday567/quilt) [![Build Status](https://travis-ci.org/tonyday567/quilt.svg)](https://travis-ci.org/tonyday567/quilt)
 ===
 
-> True greatness is measured by how much freedom you give to others, not by how much you can coerce others to do what you want. ~ Larry Wall
+The above link is a haskell library that I am using to upgrade to lts-15.6 and ghc-8.8.3. If the light is green, then I'm where I want to be.
 
-This is a patchwork quilt of all my favorite libraries I like to keep up to date with ghc.
+> True greatness is measured by how much freedom you give to others, not
+> by how much you can coerce others to do what you want. \~ Larry Wall
 
 [numhask-prelude](https://hackage.haskell.org/package/numhask-prelude)
----
+----------------------------------------------------------------------
 
-There are many preludes, but this one is mine.
+This is where I start. `numhask-prelude` brings in core libraries, and sets up numeric and Text channels.
 
-Once I have my chosen build for this, I tend to do the global installs, and especially the hie friendly step `stack hoogle --keep-going` along the way, as I add the rest of the libraries.
+This is also what you get with the [readme-lhs](https://github.com/tonyday567/readme-lhs/blob/master/other/readme-lhs.hsfiles) stack template.
 
 [readme-lhs](https://github.com/tonyday567/readme-lhs)
----
+------------------------------------------------------
 
-readme-lhs is a wrapper around pandoc that gives me a one-way write channel into a markdown file. 
+readme-lhs is a wrapper around pandoc that gives me a one-way write
+channel into a markdown file.
 
-Add code blocks to markdown files
+- Add code blocks to markdown files that looks something like this:
+    
+        ``` {.output .example}
+        ```
 
-```
-    ``` {.output .example}
-    ```
-```
+- Use Readme.Lhs.runOutput to insert output, like this:
 
-then use the runOutput monad
-
-```{.haskell}
+``` {.haskell}
 void $ runOutput ("other/readme_.md", GitHubMarkdown) ("readme.md", GitHubMarkdown) $ do
     output "example" (Fence "Simple example of an output")
-
 ```
 
-and output is inserted in the markdown:
+- And produce this:
 
 ``` {.output .example}
+Simple example of an output
 ```
 
-You can then put a stack loop on like so:
+- Put this in a stack loop like this:
 
 ```
 stack build --test --exec "$(stack path --local-install-root)/bin/quilt" --file-watch
 ```
 
-and nice markdown output is right there for upstream processes like blogging and logging.
+- Pipe the markdown file somewhere to render it, and you have a very tight workflow.
 
-If you code in haskell you really should use the native [pandoc](https://hackage.haskell.org/package/pandoc) api for text-based output.
+- Use Pandoc Native
+
+  - If you code in haskell use the native [pandoc](https://hackage.haskell.org/package/pandoc) api for output, and if you can't convert, it shouldn't exist.
 
 [numhask-space](https://github.com/tonyday567/numhask-space)
----
+------------------------------------------------------------
 
-Provides all sorts of spaces, ranges and grids. The api is general over a wide range of numbers including times, which can be tricky with boundary finding. An example; the next 500 days, marked with sensible date milestones:
+Provides all sorts of spaces, ranges and grids. The api is general over
+a wide range of numbers including times, which can be tricky with
+boundary finding. The next 500 days, marked with sensible date
+milestones:
 
-``` {.output .NumHask.Space}
-```
+![](other/timespace.svg)
 
 [numhask-array](https://github.com/tonyday567/numhask-array)
 ---
@@ -103,17 +107,50 @@ Numerical charts targetting svg as the backend.
 ``` {.output .chart-svg}
 ```
 
+global installs
+---
+
+In order:
+
+- hoogle
+- haddock
+- weeder
+- hlint
+- ormolu
+- hie
+- hie-wrapper
+- ghcid
+- pandoc
+
+
+GUI
+---
+
+With a pristine install, hie works out of the box with spacemacs.
+
+```
+(haskell
+      :variables
+      haskell-completion-backend 'lsp
+      haskell-process-suggest-remove-import-lines nil
+      lsp-haskell-process-path-hie "hie-wrapper"
+      )
+```
+
+This seems to help everything along:
+
+```
+stack haddock --keep-going
+```
+
+
+
 [perf](https://github.com/tonyday567/perf)
 ---
 
 low-level performance stats
 
 ``` {.output .perf}
-```
-
-Inner array loop for numhask-array.
-
-``` {.output .inner}
 ```
 
 [online](https://github.com/tonyday567/online)
@@ -125,6 +162,7 @@ rolling statistics
 ```
 
 My active projects.
+===
 
 [online-market](https://github.com/tonyday567/online-market)
 ---
@@ -132,20 +170,45 @@ My active projects.
 [online-covid](https://github.com/tonyday567/online-covid)
 ---
 
-global installs
----
-
-- hoogle
-- hie
-- hie-wrapper
-- hlint
-- weeder
-- ormolu
-- ghcid
-- haddock
-- pandoc
-
 workflow
 ---
 
     stack build --test --exec "$(stack path --local-install-root)/bin/quilt" --file-watch
+
+I build up in order, and, the resulting patchwork is:
+
+```
+resolver: lts-15.6
+
+packages:
+  - .
+
+extra-deps:
+  - backprop-0.2.6.3
+  - box-0.2.0
+  - chart-svg-0.0.1
+  - interpolatedstring-perl6-1.0.2
+  - javascript-bridge-0.2.0
+  - lucid-svg-0.7.1
+  - numhask-array-0.5.1
+  - numhask-prelude-0.3.3
+  - numhask-space-0.3.1
+  - online-0.4.0.0
+  - palette-0.3.0.2
+  - perf-0.5.0.0
+  - perf-analysis-0.2.0.0
+  - readme-lhs-0.5.0
+  - tdigest-0.2.1
+  - text-format-0.3.2
+  - web-rep-0.3.1
+  - git: https://github.com/tonyday567/online-market.git
+    commit: 5e3571de84cdf31d3acc8f7eff7a527e04baf47a
+  - monad-bayes-0.1.0.0@sha256:7ac7ef909cdf8247754e557172e8fd1047c413bdb9dca5153a3fbe33676112b8
+  - vinyl-0.12.1@sha256:03f5e246fae2434250987bbfe708015dc6e23f60c20739c34738acde1383b96c
+  - git: https://github.com/tonyday567/pmlb
+    commit: 5b1d7fe0a6ed6451aea844f74d543e67cdc2eb11
+  - streaming-utils-0.2.0.0@sha256:a2bd9144b336393122ffed2d3a1c747c186b8fdb9734c54d8b5874ed6166a85b
+  - json-stream-0.4.2.4@sha256:8b7f17d54a6e1e6311756270f8bcf51e91bab4300945400de66118470dcf51b9
+
+```
+
