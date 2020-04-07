@@ -2,8 +2,22 @@
 ==================================================================================================================================================
 
 The above link is a haskell library that I am using to upgrade to
-lts-15.6 and ghc-8.8.3. If the light is green, then I'm where I want to
-be.
+lts-15.6 and ghc-8.8.3. Along the way, I tear out my toolkit and
+ruthlessly target getting hie running to great success. Haddock hovers -
+I can never go back!
+
+I also have rock-solid compiled dependencies, so a new project is only
+ever a few libraries away from re-compilation.
+
+Here's how I install haskell from scratch in OSX.
+
+    brew install haskell-stack
+    stack new simple readme-lhs --resolver=lts-15.6
+    cd quilt
+    stack build --test --exec "$(stack path --local-install-root)/bin/quilt" --file-watch
+
+I then add in my current library stack with an example of usage. This
+process shines a light on all the warts in the patchwork.
 
 > True greatness is measured by how much freedom you give to others, not
 > by how much you can coerce others to do what you want. \~ Larry Wall
@@ -67,6 +81,8 @@ milestones:
 
 ![](other/timespace.svg)
 
+![](other/timespace.svg)
+
 [numhask-array](https://github.com/tonyday567/numhask-array)
 ------------------------------------------------------------
 
@@ -120,37 +136,6 @@ Numerical charts targetting svg as the backend.
 
 ![](other/chart-svg.svg)
 
-global installs
----------------
-
-In order:
-
--   hoogle
--   haddock
--   weeder
--   hlint
--   ormolu
--   hie
--   hie-wrapper
--   ghcid
--   pandoc
-
-GUI
----
-
-With a pristine install, hie works out of the box with spacemacs.
-
-    (haskell
-          :variables
-          haskell-completion-backend 'lsp
-          haskell-process-suggest-remove-import-lines nil
-          lsp-haskell-process-path-hie "hie-wrapper"
-          )
-
-This seems to help everything along:
-
-    stack haddock --keep-going
-
 [perf](https://github.com/tonyday567/perf)
 ------------------------------------------
 
@@ -165,28 +150,32 @@ rolling statistics
 
 ![](other/online.svg)
 
-My active projects.
-===================
-
-[online-market](https://github.com/tonyday567/online-market)
-------------------------------------------------------------
-
-[online-covid](https://github.com/tonyday567/online-covid)
-----------------------------------------------------------
-
-workflow
---------
+development
+===========
 
     stack build --test --exec "$(stack path --local-install-root)/bin/quilt" --file-watch
 
-I build up in order, and, the resulting patchwork is:
+toolkit
+-------
 
-    resolver: lts-15.6
+I run spacemacs with a few variables tweaked:
 
-    packages:
-      - .
+    (haskell
+     :variables
+     haskell-completion-backend 'lsp
+     haskell-process-suggest-remove-import-lines nil
+     lsp-haskell-process-path-hie "hie-wrapper"
+    )
 
-    extra-deps:
+and that's it! `hie` works with a local haddock server, so you need to
+do `stack haddock --keep-going` to feed it haddocks to render. Another
+reason for a patchwork approach.
+
+dependencies
+------------
+
+The stack.yaml for quilt is:
+
       - backprop-0.2.6.3
       - box-0.2.0
       - chart-svg-0.0.1
@@ -204,11 +193,31 @@ I build up in order, and, the resulting patchwork is:
       - tdigest-0.2.1
       - text-format-0.3.2
       - web-rep-0.3.1
-      - git: https://github.com/tonyday567/online-market.git
-        commit: 5e3571de84cdf31d3acc8f7eff7a527e04baf47a
-      - monad-bayes-0.1.0.0@sha256:7ac7ef909cdf8247754e557172e8fd1047c413bdb9dca5153a3fbe33676112b8
-      - vinyl-0.12.1@sha256:03f5e246fae2434250987bbfe708015dc6e23f60c20739c34738acde1383b96c
+      - monad-bayes-0.1.0.0
+      - vinyl-0.12.1
       - git: https://github.com/tonyday567/pmlb
         commit: 5b1d7fe0a6ed6451aea844f74d543e67cdc2eb11
-      - streaming-utils-0.2.0.0@sha256:a2bd9144b336393122ffed2d3a1c747c186b8fdb9734c54d8b5874ed6166a85b
-      - json-stream-0.4.2.4@sha256:8b7f17d54a6e1e6311756270f8bcf51e91bab4300945400de66118470dcf51b9
+      - streaming-utils-0.2.0.0
+      - json-stream-0.4.2.4
+
+global installs
+---------------
+
+I chisled down my \~/.local/bin to:
+
+-   hoogle
+-   haddock
+-   weeder
+-   hlint
+-   ormolu
+-   hie
+-   hie-wrapper
+-   ghcid
+-   pandoc
+
+warts
+-----
+
+-   extract online-csv streaming from PMLB
+-   chisel out lucid & lucid-svg
+-   chisel out streaming-utils

@@ -29,16 +29,8 @@ import Readme.Lhs
 import qualified Streaming.Prelude as S
 import Web.Page
 
--- | the test box is a pure list emitter into an IORef appending list
--- > etc () transducer' box'
--- echo: hi
--- echo: bye
-testBox :: [a] -> IO (Cont IO (Box STM a a), IO [a])
-testBox xs = do
-  (_, c, res) <- cCRef
-  let e = toEmit (S.each xs)
-  pure (Box <$> c <*> e, res)
 
+-- performance
 dot100 :: IO [[Cycle]]
 dot100 = do
   let !vnaf = fromList [1 .. 100] :: F.Array '[100] Double
@@ -49,6 +41,13 @@ dot100 = do
   where
     tdotnaf n x = ticks n (F.dot sum (+) x) x
     tdotnad n x = ticks n (D.dot sum (+) x) x
+
+glyphPalette :: [Annotation]
+glyphPalette =
+        zipWith
+        (\c s -> GlyphA $ defaultGlyphStyle & #shape .~ s & #color .~ c)
+        chartPalette
+        [CircleGlyph, SquareGlyph]
 
 makeDateTicks :: Int -> Int -> IO [(Int, Text)]
 makeDateTicks n x = do
@@ -66,6 +65,16 @@ allDates n (Range (UTCTime l _) (UTCTime u _)) =
   where
     ds = fmap (`addDays` l) (take (fromIntegral $ diffDays u l) [0 ..])
 
+-- | the test box is a pure list emitter into an IORef appending list
+-- > etc () transducer' box'
+-- echo: hi
+-- echo: bye
+testBox :: [a] -> IO (Cont IO (Box STM a a), IO [a])
+testBox xs = do
+  (_, c, res) <- cCRef
+  let e = toEmit (S.each xs)
+  pure (Box <$> c <*> e, res)
+
 main :: IO ()
 main = do
   -- Box test
@@ -82,9 +91,10 @@ main = do
   writeHudOptionsChart
     "other/perf.svg"
     defaultSvgOptions
-    defaultHudOptions
+    (defaultHudOptions
+    & #hudLegend .~ Just (defaultLegendOptions, zip glyphPalette ["Fixed", "Dynamic"]))
     []
-    (zipWith (\c ts -> Chart (LineA (defaultLineStyle & #color .~ c)) $ zipWith SP [0..] (fromIntegral <$> ts)) chartPalette r100)
+    (zipWith (\a ts -> Chart a (zipWith SP [0..] (fromIntegral <$> ts)))        glyphPalette r100)
 
   -- online chart
   let lss = take 3 $ (\x -> defaultLineStyle & #color .~ x) <$> chartPalette
@@ -112,7 +122,9 @@ main = do
     )
     []
     mempty
+
   let b :: Array '[2, 3] Double = fromList [1 .. 6]
+
   void $ runOutput ("other/readme_.md", GitHubMarkdown) ("readme.md", GitHubMarkdown) $ do
     output "example" (Fence "Simple example of an output")
     output
