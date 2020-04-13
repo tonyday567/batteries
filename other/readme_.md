@@ -75,8 +75,6 @@ milestones:
 ``` {.output .NumHask.Space}
 ```
 
-![](other/timespace.svg)
-
 [numhask-array](https://github.com/tonyday567/numhask-array)
 ---
 
@@ -164,37 +162,6 @@ I run spacemacs with a few variables tweaked:
 and that's it!
 `hie` works with a local haddock server, so you need to do `stack haddock --keep-going` to feed it haddocks to render. Another reason for a patchwork approach.
 
-dependencies
----
-
-The stack.yaml for quilt is:
-
-```
-  - backprop-0.2.6.3
-  - box-0.2.0
-  - chart-svg-0.0.1
-  - interpolatedstring-perl6-1.0.2
-  - javascript-bridge-0.2.0
-  - lucid-svg-0.7.1
-  - numhask-array-0.5.1
-  - numhask-prelude-0.3.3
-  - numhask-space-0.3.1
-  - online-0.4.0.0
-  - palette-0.3.0.2
-  - perf-0.5.0.0
-  - perf-analysis-0.2.0.0
-  - readme-lhs-0.5.0
-  - tdigest-0.2.1
-  - text-format-0.3.2
-  - web-rep-0.3.1
-  - monad-bayes-0.1.0.0
-  - vinyl-0.12.1
-  - git: https://github.com/tonyday567/pmlb
-    commit: 5b1d7fe0a6ed6451aea844f74d543e67cdc2eb11
-  - streaming-utils-0.2.0.0
-  - json-stream-0.4.2.4
-```
-
 global installs
 ---
 
@@ -212,6 +179,4 @@ I chisled down my ~/.local/bin to:
  
 warts
 ---
-- extract online-csv streaming from PMLB
-- chisel out lucid & lucid-svg
-- chisel out streaming-utils
+- factor out lucid & lucid-svg

@@ -50,7 +50,7 @@ executable quilt
     , foldl
     , lens
     , online
-    , online-market
     , time
+    , online-csv
 
  default-language: Haskell2010

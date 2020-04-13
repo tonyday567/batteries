@@ -21,13 +21,7 @@ extra-deps:
   - tdigest-0.2.1
   - text-format-0.3.2
   - web-rep-0.3.1
-  - git: https://github.com/tonyday567/online-market.git
-    commit: 5e3571de84cdf31d3acc8f7eff7a527e04baf47a
-  - monad-bayes-0.1.0.0@sha256:7ac7ef909cdf8247754e557172e8fd1047c413bdb9dca5153a3fbe33676112b8
-  - vinyl-0.12.1@sha256:03f5e246fae2434250987bbfe708015dc6e23f60c20739c34738acde1383b96c
-  - git: https://github.com/tonyday567/pmlb
-    commit: 5b1d7fe0a6ed6451aea844f74d543e67cdc2eb11
-  - streaming-utils-0.2.0.0@sha256:a2bd9144b336393122ffed2d3a1c747c186b8fdb9734c54d8b5874ed6166a85b
-  - json-stream-0.4.2.4@sha256:8b7f17d54a6e1e6311756270f8bcf51e91bab4300945400de66118470dcf51b9
+  - git: https://github.com/tonyday567/online-csv
+    commit: 67844ac0a80d2082b805554c79bd061c2fa85750
 
 allow-newer: true

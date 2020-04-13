@@ -125,60 +125,18 @@ packages:
     hackage: web-rep-0.3.1
 - completed:
     cabal-file:
-      size: 2318
-      sha256: 64e0c16eb54199ff795bcd92aa7dd8cca5685024684922a5b87a02071446e0ca
-    name: online-market
-    version: 0.2.0.0
-    git: https://github.com/tonyday567/online-market.git
-    pantry-tree:
-      size: 5610
-      sha256: 35ab8ca4c4c87b801a9a46b8f925790c1e0ddae99d6a7982bf060e8cb49877b0
-    commit: 5e3571de84cdf31d3acc8f7eff7a527e04baf47a
-  original:
-    git: https://github.com/tonyday567/online-market.git
-    commit: 5e3571de84cdf31d3acc8f7eff7a527e04baf47a
-- completed:
-    hackage: monad-bayes-0.1.0.0@sha256:7ac7ef909cdf8247754e557172e8fd1047c413bdb9dca5153a3fbe33676112b8,5406
-    pantry-tree:
-      size: 2414
-      sha256: 5c40e54652c3e2af6bc1c0e8471834f5459451e57dcd71d892dcc644fb540157
-  original:
-    hackage: monad-bayes-0.1.0.0@sha256:7ac7ef909cdf8247754e557172e8fd1047c413bdb9dca5153a3fbe33676112b8
-- completed:
-    hackage: vinyl-0.12.1@sha256:03f5e246fae2434250987bbfe708015dc6e23f60c20739c34738acde1383b96c,3921
-    pantry-tree:
-      size: 1857
-      sha256: 09713e6b691cb2a713104301079c692e72d8bdcbde23f90d510ba3f606263044
-  original:
-    hackage: vinyl-0.12.1@sha256:03f5e246fae2434250987bbfe708015dc6e23f60c20739c34738acde1383b96c
-- completed:
-    cabal-file:
-      size: 2005
-      sha256: ef4dfed1fe16698965ec134b3b1d5b0993593df5a8f771416580873452ca0a6c
-    name: pmlb
+      size: 1966
+      sha256: a4c37debc75e725950ad4cb44d3a95a55101cf3b27db34838088d2c5837c5f80
+    name: online-csv
     version: 0.0.0.1
-    git: https://github.com/tonyday567/pmlb
+    git: https://github.com/tonyday567/online-csv
     pantry-tree:
-      size: 1306
-      sha256: 9259703def8fe99342dbc22ffce60c06bb4c3112aff4a8661593823fa837055f
-    commit: 5b1d7fe0a6ed6451aea844f74d543e67cdc2eb11
+      size: 829
+      sha256: f43138d9fa9afe569dcd1709d5b3fbc3b4cbcc7427240bcf35ea50dff43b10a9
+    commit: 67844ac0a80d2082b805554c79bd061c2fa85750
   original:
-    git: https://github.com/tonyday567/pmlb
-    commit: 5b1d7fe0a6ed6451aea844f74d543e67cdc2eb11
-- completed:
-    hackage: streaming-utils-0.2.0.0@sha256:a2bd9144b336393122ffed2d3a1c747c186b8fdb9734c54d8b5874ed6166a85b,4114
-    pantry-tree:
-      size: 571
-      sha256: e0e6ffb4ff9437644e66765d7de6a1f8784e926fcc6edb28aa66e297e119f111
-  original:
-    hackage: streaming-utils-0.2.0.0@sha256:a2bd9144b336393122ffed2d3a1c747c186b8fdb9734c54d8b5874ed6166a85b
-- completed:
-    hackage: json-stream-0.4.2.4@sha256:8b7f17d54a6e1e6311756270f8bcf51e91bab4300945400de66118470dcf51b9,4716
-    pantry-tree:
-      size: 2055
-      sha256: 3ad81d47097db52223576d79ff441f04682358cd3057de4acb604409772641ca
-  original:
-    hackage: json-stream-0.4.2.4@sha256:8b7f17d54a6e1e6311756270f8bcf51e91bab4300945400de66118470dcf51b9
+    git: https://github.com/tonyday567/online-csv
+    commit: 67844ac0a80d2082b805554c79bd061c2fa85750
 snapshots:
 - completed:
     size: 491387
