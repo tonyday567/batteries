@@ -1,53 +1,53 @@
 
 <svg xmlns="http://www.w3.org/2000/svg" height="300.0" viewBox="-0.8409159860889829 -0.52 1.613490986088983 1.143140058083417" width="450.0" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <g stroke-opacity="0.0" fill-opacity="3.0e-2" stroke="#000000" stroke-width="0.0" fill="#666666">
-    <rect height="0.9070294784580499" width="3.0030030030030463e-3" x="-0.75" y="-0.5"/>
+  <g stroke-opacity="0.0" fill-opacity="0.1" stroke="#000000" stroke-width="0.0" fill="#cccccc">
+    <rect height="0.9049773755656109" width="3.0030030030030463e-3" x="-0.75" y="-0.5"/>
   </g>
-  <g fill-opacity="1.0" font-size="4.137931034482759e-2" stroke="none" stroke-width="0.0" fill="#666666" text-anchor="end">
-    <text transform="rotate(-45.0, -0.7484984984984985, 0.5)" x="-0.7484984984984985" y="0.5">13 Apr
+  <g fill-opacity="0.8" font-size="4.137931034482759e-2" stroke="none" stroke-width="0.0" fill="#333333" text-anchor="end">
+    <text transform="rotate(-45.0, -0.7484984984984985, 0.5)" x="-0.7484984984984985" y="0.5">21 Apr
     </text>
   </g>
-  <g fill-opacity="1.0" font-size="4.137931034482759e-2" stroke="none" stroke-width="0.0" fill="#666666" text-anchor="end">
-    <text transform="rotate(-45.0, -0.5142642642642643, 0.5)" x="-0.5142642642642643" y="0.5">30 Jun
+  <g fill-opacity="0.8" font-size="4.137931034482759e-2" stroke="none" stroke-width="0.0" fill="#333333" text-anchor="end">
+    <text transform="rotate(-45.0, -0.5382882882882882, 0.5)" x="-0.5382882882882882" y="0.5">30 Jun
     </text>
   </g>
-  <g fill-opacity="1.0" font-size="4.137931034482759e-2" stroke="none" stroke-width="0.0" fill="#666666" text-anchor="end">
-    <text transform="rotate(-45.0, -0.23798798798798793, 0.5)" x="-0.23798798798798793" y="0.5">30 Sep
+  <g fill-opacity="0.8" font-size="4.137931034482759e-2" stroke="none" stroke-width="0.0" fill="#333333" text-anchor="end">
+    <text transform="rotate(-45.0, -0.262012012012012, 0.5)" x="-0.262012012012012" y="0.5">30 Sep
     </text>
   </g>
-  <g fill-opacity="1.0" font-size="4.137931034482759e-2" stroke="none" stroke-width="0.0" fill="#666666" text-anchor="end">
-    <text transform="rotate(-45.0, 3.828828828828834e-2, 0.5)" x="3.828828828828834e-2" y="0.5">31 Dec
+  <g fill-opacity="0.8" font-size="4.137931034482759e-2" stroke="none" stroke-width="0.0" fill="#333333" text-anchor="end">
+    <text transform="rotate(-45.0, 1.4264264264264193e-2, 0.5)" x="1.4264264264264193e-2" y="0.5">31 Dec
     </text>
   </g>
-  <g fill-opacity="1.0" font-size="4.137931034482759e-2" stroke="none" stroke-width="0.0" fill="#666666" text-anchor="end">
-    <text transform="rotate(-45.0, 0.3085585585585586, 0.5)" x="0.3085585585585586" y="0.5">31 Mar
+  <g fill-opacity="0.8" font-size="4.137931034482759e-2" stroke="none" stroke-width="0.0" fill="#333333" text-anchor="end">
+    <text transform="rotate(-45.0, 0.2845345345345345, 0.5)" x="0.2845345345345345" y="0.5">31 Mar
     </text>
   </g>
-  <g fill-opacity="1.0" font-size="4.137931034482759e-2" stroke="none" stroke-width="0.0" fill="#666666" text-anchor="end">
-    <text transform="rotate(-45.0, 0.5818318318318318, 0.5)" x="0.5818318318318318" y="0.5">30 Jun
+  <g fill-opacity="0.8" font-size="4.137931034482759e-2" stroke="none" stroke-width="0.0" fill="#333333" text-anchor="end">
+    <text transform="rotate(-45.0, 0.5578078078078077, 0.5)" x="0.5578078078078077" y="0.5">30 Jun
     </text>
   </g>
-  <g fill-opacity="1.0" font-size="4.137931034482759e-2" stroke="none" stroke-width="0.0" fill="#666666" text-anchor="end">
-    <text transform="rotate(-45.0, 0.75, 0.5)" x="0.75" y="0.5">25 Aug
+  <g fill-opacity="0.8" font-size="4.137931034482759e-2" stroke="none" stroke-width="0.0" fill="#333333" text-anchor="end">
+    <text transform="rotate(-45.0, 0.75, 0.5)" x="0.75" y="0.5">02 Sep
     </text>
   </g>
-  <g stroke-opacity="0.4" fill-opacity="1.0" stroke="#2c429d" stroke-width="5.0e-3" fill="#5f0391">
-    <polyline points="-0.7484984984984985,0.44470521541950114
--0.7484984984984985,0.4147052154195011"/>
-    <polyline points="-0.5142642642642643,0.44470521541950114
--0.5142642642642643,0.4147052154195011"/>
-    <polyline points="-0.23798798798798793,0.44470521541950114
--0.23798798798798793,0.4147052154195011"/>
-    <polyline points="3.828828828828834e-2,0.44470521541950114
-3.828828828828834e-2,0.4147052154195011"/>
-    <polyline points="0.3085585585585586,0.44470521541950114
-0.3085585585585586,0.4147052154195011"/>
-    <polyline points="0.5818318318318318,0.44470521541950114
-0.5818318318318318,0.4147052154195011"/>
-    <polyline points="0.75,0.44470521541950114
-0.75,0.4147052154195011"/>
+  <g stroke-opacity="0.5" fill-opacity="0.5" stroke="#570d66" stroke-width="5.0e-3" fill="#570d66">
+    <polyline points="-0.7484984984984985,0.44486425339366514
+-0.7484984984984985,0.4148642533936651"/>
+    <polyline points="-0.5382882882882882,0.44486425339366514
+-0.5382882882882882,0.4148642533936651"/>
+    <polyline points="-0.262012012012012,0.44486425339366514
+-0.262012012012012,0.4148642533936651"/>
+    <polyline points="1.4264264264264193e-2,0.44486425339366514
+1.4264264264264193e-2,0.4148642533936651"/>
+    <polyline points="0.2845345345345345,0.44486425339366514
+0.2845345345345345,0.4148642533936651"/>
+    <polyline points="0.5578078078078077,0.44486425339366514
+0.5578078078078077,0.4148642533936651"/>
+    <polyline points="0.75,0.44486425339366514
+0.75,0.4148642533936651"/>
   </g>
-  <g stroke-opacity="0.0" fill-opacity="0.5" stroke="#666666" stroke-width="0.0" fill="#5f0391">
-    <rect height="4.535147392290273e-3" width="3.0030030030030463e-3" x="-0.75" y="0.41609977324263037"/>
+  <g stroke-opacity="0.5" fill-opacity="0.5" stroke="#570d66" stroke-width="0.0" fill="#570d66">
+    <rect height="4.524886877828038e-3" width="3.0030030030030463e-3" x="-0.75" y="0.414027149321267"/>
   </g>
 </svg>

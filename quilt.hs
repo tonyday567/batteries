@@ -46,7 +46,7 @@ glyphPalette :: [Annotation]
 glyphPalette =
         zipWith
         (\c s -> GlyphA $ defaultGlyphStyle & #shape .~ s & #color .~ c)
-        chartPalette
+        palette
         [CircleGlyph, SquareGlyph]
 
 makeDateTicks :: Int -> Int -> IO [(Int, Text)]
@@ -97,7 +97,7 @@ main = do
     (zipWith (\a ts -> Chart a (zipWith SP [0..] (fromIntegral <$> ts)))        glyphPalette r100)
 
   -- online chart
-  let lss = take 3 $ (\x -> defaultLineStyle & #color .~ x) <$> chartPalette
+  let lss = take 3 $ (\x -> defaultLineStyle & #color .~ x) <$> palette
   let xss = drop 2 . L.scan (ma 0.999) . fmap fromIntegral <$> r100
   let maExample =
         makeExample

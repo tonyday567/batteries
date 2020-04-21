@@ -19,12 +19,19 @@ packages:
   original:
     hackage: box-0.2.0
 - completed:
-    hackage: chart-svg-0.0.1@sha256:be74f6efa8abb68743672b69aba1a07461aa7d2822d988f460b5c918ba258433,2294
+    cabal-file:
+      size: 2261
+      sha256: 63e40dd33b10da956cd0bb8f717ecbc1a33ba6d92926dac1e8d25f5139f37c12
+    name: chart-svg
+    version: 0.0.1
+    git: https://github.com/tonyday567/chart-svg
     pantry-tree:
-      size: 1012
-      sha256: 672cfeca6b92c87c4d1f3c3d6150da3ee59b3a96337f6f944f2f5515c600ba67
+      size: 2220
+      sha256: 998ca571f75a9314e674f7f34dbd645b5905b7efb7e60526a8fd54932d1bff46
+    commit: 436afe6d9f49782200d5d851fc8a36e330ddef8e
   original:
-    hackage: chart-svg-0.0.1
+    git: https://github.com/tonyday567/chart-svg
+    commit: 436afe6d9f49782200d5d851fc8a36e330ddef8e
 - completed:
     hackage: interpolatedstring-perl6-1.0.2@sha256:7ce49c8a69a2a1b89c001ed79db2aab656ffd0faf2a7a701a553b6deb5c8ba7f,1073
     pantry-tree:
@@ -75,13 +82,6 @@ packages:
   original:
     hackage: online-0.4.0.0
 - completed:
-    hackage: palette-0.3.0.2@sha256:583ab3b018a26ae8788c6a13007d72edeb9231315da8728b9bb4ff5f4236a374,1522
-    pantry-tree:
-      size: 6342
-      sha256: fd476440e94fc797e7dfe033c88c8925c23aaf8ea40cdccbfff9c132760cdc64
-  original:
-    hackage: palette-0.3.0.2
-- completed:
     hackage: perf-0.5.0.0@sha256:c38a985d633dcbc9af02eed9a1501cb4d24c87f625edec98d5a64730035cfa38,1475
     pantry-tree:
       size: 422
@@ -117,13 +117,6 @@ packages:
   original:
     hackage: text-format-0.3.2
 - completed:
-    hackage: web-rep-0.3.1@sha256:d494c77ffe6b7bba23200487cca8fbc3864cc4dd000277b0a14173ba860fd1b5,2577
-    pantry-tree:
-      size: 1062
-      sha256: 0e9070f297580c449fb06f83ad96c90585988deca5139283268082731a426f60
-  original:
-    hackage: web-rep-0.3.1
-- completed:
     cabal-file:
       size: 1966
       sha256: a4c37debc75e725950ad4cb44d3a95a55101cf3b27db34838088d2c5837c5f80
@@ -137,6 +130,20 @@ packages:
   original:
     git: https://github.com/tonyday567/online-csv
     commit: 67844ac0a80d2082b805554c79bd061c2fa85750
+- completed:
+    cabal-file:
+      size: 2542
+      sha256: 2db24be9af0df6c27fe4edd68a9038fc4f8c848c0633543a86f5c8142b74723d
+    name: web-rep
+    version: 0.4.0
+    git: https://github.com/tonyday567/web-rep
+    pantry-tree:
+      size: 2323
+      sha256: c7706bb3bbd45811d53ec9ff9458760d5fa2e60395cc599d5e74dc77d154b14d
+    commit: 0863a2974af30ece6cb46fb8a1198cb9b053c5e2
+  original:
+    git: https://github.com/tonyday567/web-rep
+    commit: 0863a2974af30ece6cb46fb8a1198cb9b053c5e2
 snapshots:
 - completed:
     size: 491387
