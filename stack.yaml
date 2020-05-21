@@ -5,27 +5,16 @@ packages:
 
 extra-deps:
   - protolude-0.3.0
-  # - chart-svg-0.0.3
-  - git: https://github.com/tonyday567/chart-svg
-    commit: 48d6de4538afa0591bccb37da73a89f3d1163cd7
+  - chart-svg-0.0.3
   - box-0.4.0
   - git: https://github.com/tonyday567/online-csv
     commit: 05b5a327158e2b5b07719710c9f9d9cba3915155
   - numhask-array-0.6.0
   - numhask-prelude-0.5.0
   - numhask-space-0.4.0
-  # - online-0.5.0
-  - git: https://github.com/tonyday567/online
-    commit: f8b70e057e8ed356758f47f16ec461853d5dc785
-    subdir: online
-  # - perf-0.6.0
-  - git: https://github.com/tonyday567/perf
-    commit: c949dba2816feac90ccd06c9359e7a1af24621ef
-    subdir: perf
-  # - perf-analysis-0.3.0
-  - git: https://github.com/tonyday567/perf
-    commit: c949dba2816feac90ccd06c9359e7a1af24621ef
-    subdir: perf-analysis
+  - online-0.5.0
+  - perf-0.6.0
+  - perf-analysis-0.3.0
   - readme-lhs-0.6.0
   - web-rep-0.5.0
   # external non-stack libraries
@@ -37,4 +26,6 @@ extra-deps:
   - lucid-svg-0.7.1
   - text-format-0.3.2
   - vinyl-0.12.2
+  - monad-bayes-0.1.1.0
+
 allow-newer: true
