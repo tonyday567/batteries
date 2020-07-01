@@ -13,7 +13,6 @@
 import Box
 import Chart
 import Chart.Examples
-import qualified Control.Foldl as L
 import Control.Lens hiding (para)
 import qualified Data.Text.Lazy as Text
 import Data.Time.Calendar
@@ -23,12 +22,11 @@ import NumHask.Array
 import qualified NumHask.Array.Dynamic as D
 import qualified NumHask.Array.Fixed as F
 import NumHask.Prelude
-import Online
+import Data.Mealy
 import Perf
-import Readme.Lhs
+import Readme.Lhs hiding (fromList)
 import qualified Streaming.Prelude as S
 import Web.Page
-
 
 -- performance
 dot100 :: IO [[Cycle]]
@@ -98,7 +96,7 @@ main = do
 
   -- online chart
   let lss = take 3 $ (\x -> defaultLineStyle & #color .~ x) <$> palette
-  let xss = drop 2 . L.scan (ma 0.999) . fmap fromIntegral <$> r100
+  let xss = drop 2 . scan (ma 0.999) . fmap fromIntegral <$> r100
   let maExample =
         makeExample
           defaultHudOptions
@@ -129,22 +127,22 @@ main = do
     output "example" (Fence "Simple example of an output")
     output
       "NumHask.Space"
-      (Native $ ((: []) . Plain . (: [])) (image "" "other/timespace.svg"))
+      (Native . Readme.Lhs.toList . plain $ image "other/timespace.svg" "" "timespace chart")
     output
       "NumHask.Array"
       (Fence $ show $ dot sum (*) b (F.transpose b))
     output
       "Box"
-      (Native $ para <$> res)
+      (Native $ Readme.Lhs.toList $ plain $ mconcat $ str <$> res)
     output
       "web-rep"
       (Fence . Text.toStrict . Lucid.renderText . renderPage $ mempty)
     output
       "chart-svg"
-      (Native $ ((: []) . Plain . (: [])) (image "" "other/chart-svg.svg"))
+      (Native . Readme.Lhs.toList . plain $ image "other/chart-svg.svg" "" "chart-svg")
     output
       "perf"
-      (Native $ ((: []) . Plain . (: [])) (image "" "other/perf.svg"))
+      (Native . Readme.Lhs.toList . plain $ image "other/perf.svg" "" "perf")
     output
       "online"
-      (Native $ ((: []) . Plain . (: [])) (image "" "other/online.svg"))
+      (Native . Readme.Lhs.toList . plain $ image "other/online.svg" "" "online")

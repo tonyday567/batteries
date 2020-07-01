@@ -1,30 +1,22 @@
 [quilt](https://github.com/tonyday567/quilt) [![Build Status](https://travis-ci.org/tonyday567/quilt.svg)](https://travis-ci.org/tonyday567/quilt)
 ==================================================================================================================================================
-
-The above link is a haskell library that I am using to upgrade to
-lts-15.6 and ghc-8.8.3. Along the way, I tear out my toolkit and ruthlessly target getting hie running to great success. Haddock hovers - I can never go back!
-
-I also have rock-solid compiled dependencies, so a new project is only ever a few libraries away from re-compilation.
-
-Here's how I install haskell from scratch in OSX.
-
-```
-brew install haskell-stack
-stack new simple readme-lhs --resolver=lts-15.6
-cd quilt
-stack build --test --exec "$(stack path --local-install-root)/bin/quilt" --file-watch
-```
-
-I then add in my current library stack with an example of usage. This process shines a light on all the warts in the patchwork.
-
 > True greatness is measured by how much freedom you give to others, not
 > by how much you can coerce others to do what you want. \~ Larry Wall
 
+ghc-8.10.1
+nightly-2020-06-25
+
+OSX Install.
+
+    brew install haskell-stack
+    stack new simple readme-lhs
+    cd quilt
+    stack build --test --exec "$(stack path --local-install-root)/bin/quilt" --file-watch
 
 [numhask-prelude](https://hackage.haskell.org/package/numhask-prelude)
 ----------------------------------------------------------------------
 
-This is where I start. `numhask-prelude` brings in core libraries, and sets up numeric and Text channels.
+`numhask-prelude` brings in core libraries, and sets up numeric and Text channels.
 
 This is also what you get with the [readme-lhs](https://github.com/tonyday567/readme-lhs/blob/master/other/readme-lhs.hsfiles) stack template.
 
@@ -55,7 +47,7 @@ Simple example of an output
 - Put this in a stack loop like this:
 
 ```
-stack build --test --exec "$(stack path --local-install-root)/bin/quilt" --file-watch
+stack build --exec "$(stack path --local-install-root)/bin/quilt" --file-watch
 ```
 
 - Pipe the markdown file somewhere to render it, and you have a very tight workflow.
@@ -134,7 +126,7 @@ low-level performance stats
 [online](https://github.com/tonyday567/online)
 ---
 
-rolling statistics
+statistics based on mealy machines
 
 ``` {.output .online}
 ```
@@ -142,7 +134,7 @@ rolling statistics
 development
 ===
 
-    stack build --test --exec "$(stack path --local-install-root)/bin/quilt" --file-watch
+    stack build --exec "$(stack path --local-install-root)/bin/quilt" --file-watch
 
 
 toolkit
@@ -150,33 +142,35 @@ toolkit
 
 I run spacemacs with a few variables tweaked:
 
-```     
-(haskell
- :variables
- haskell-completion-backend 'lsp
- haskell-process-suggest-remove-import-lines nil
- lsp-haskell-process-path-hie "hie-wrapper"
-)
-```
+    (haskell
+     :variables
+     haskell-completion-backend 'lsp
+     haskell-process-suggest-remove-import-lines nil
+     lsp-haskell-process-path-hie "haskell-language-server"
+    )
 
-and that's it!
-`hie` works with a local haddock server, so you need to do `stack haddock --keep-going` to feed it haddocks to render. Another reason for a patchwork approach.
+`haskell-language-server` works with a local haddock server, so you need to
+do `stack haddock --keep-going` to feed it haddocks to render. Another
+reason for a patchwork approach.
+
+A hie.yaml is also required.
 
 global installs
----
+---------------
 
-I chisled down my ~/.local/bin to: 
+I chisled down my \~/.local/bin to:
 
 -   hoogle
 -   haddock
--   weeder
 -   hlint
 -   ormolu
--   hie
--   hie-wrapper
+-   haskell-language-server
+-   haskell-language-server-wrapper
 -   ghcid
 -   pandoc
- 
-warts
----
-- factor out lucid & lucid-svg
+
+todo
+-----
+
+- move to pandoc-2.10
+- backprop

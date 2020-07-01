@@ -1,6 +1,6 @@
-cabal-version: 3.0
-name: quilt
-version: 0.0.1
+cabal-version: 2.4
+name:          quilt
+version:       0.1.0
 synopsis: See readme.md
 description: See readme.md for description.
 category: project
@@ -20,6 +20,27 @@ source-repository head
 executable quilt
   main-is: quilt.hs
   hs-source-dirs: .
+  build-depends:
+    base >= 4.7 && < 5,
+    blaze-html,
+    box >= 0.5,
+    chart-svg >= 0.1,
+    foldl,
+    lens,
+    lucid,
+    numhask-array >= 0.7,
+    numhask-prelude >= 0.6,
+    numhask-space >= 0.5,
+    online >= 0.6,
+    box-csv,
+    perf >= 0.7,
+    readme-lhs >= 0.7,
+    streaming,
+    text,
+    time,
+    web-rep >= 0.6
+
+  default-language: Haskell2010
   default-extensions:
     NegativeLiterals
     NoImplicitPrelude
@@ -31,26 +52,3 @@ executable quilt
     -threaded
     -rtsopts
     -with-rtsopts=-N
-  build-depends:
-      base >= 4.7 && < 5
-    , protolude >= 0.3 && < 0.4
-    , readme-lhs >= 0.6 && < 0.7
-    , numhask-prelude >= 0.5 && < 0.6
-    , numhask-space >= 0.4 && < 0.5
-    , numhask-array >= 0.6 && < 0.7
-    , streaming
-    , box >= 0.4 && < 0.5
-    , web-rep >= 0.5 && < 0.6
-    , chart-svg >= 0.0.3 && < 0.1
-    , blaze-html
-    , lucid
-    , text
-    , perf >= 0.6 && < 0.7
-    , perf-analysis >= 0.3 && < 0.4
-    , foldl
-    , lens
-    , online >= 0.5 && < 0.6
-    , time
-    , online-csv
-
- default-language: Haskell2010

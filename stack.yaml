@@ -1,31 +1,49 @@
-resolver: lts-15.13
+resolver: nightly-2020-06-25
 
 packages:
   - .
 
 extra-deps:
-  - protolude-0.3.0
-  - chart-svg-0.0.3
-  - box-0.4.0
-  - git: https://github.com/tonyday567/online-csv
-    commit: 05b5a327158e2b5b07719710c9f9d9cba3915155
-  - numhask-array-0.6.0
-  - numhask-prelude-0.5.0
-  - numhask-space-0.4.0
-  - online-0.5.0
-  - perf-0.6.0
-  - perf-analysis-0.3.0
-  - readme-lhs-0.6.0
-  - web-rep-0.5.0
+  - git: https://github.com/tonyday567/numhask-space
+    commit: 6525f5096525196fe367dabdfe596a7bd0c0aa6c
+  - git: https://github.com/tonyday567/numhask
+    commit: 37ee8dced120f60a511baa6bb6c7ac382b1e8827
+    subdir: numhask-prelude
+  - git: https://github.com/tonyday567/numhask
+    commit: 37ee8dced120f60a511baa6bb6c7ac382b1e8827
+    subdir: numhask
+  - git: https://github.com/tonyday567/numhask
+    commit: 37ee8dced120f60a511baa6bb6c7ac382b1e8827
+    subdir: numhask-hedgehog
+  - git: https://github.com/tonyday567/numhask-array
+    commit: 7f3d74e08c256e7cc846d348784b27e0467b00ec
+  - git: https://github.com/tonyday567/box
+    commit: d496d333524d5a64a799dd390f4cc98b0d35bb67
+  - git: https://github.com/tonyday567/box-csv
+    commit: f8a0ff31595537d314315f6fc6d79f606ae632f2
+  - git: https://github.com/tonyday567/web-rep
+    commit: 340751aff13ce23c13b55960f78c51d52a8ad6f7
+  - javascript-bridge-0.2.0
+  - git: https://github.com/tonyday567/chart-svg
+    commit: 25e1e1eae49a588d356d51e5289e339e0975f05b
+  - git: https://github.com/tonyday567/readme-lhs
+    commit: 36b895ee81aad473131e07ef40ba964765362b00
+  - git: https://github.com/jgm/pandoc
+    commit: cd3941d34e578f2ebd4dd11484fc26c7afae8a6a
+  - hslua-1.1.2
+  - jira-wiki-markup-1.3.2
+
   # external non-stack libraries
   - Color-0.1.4
-  - backprop-0.2.6.3
-  - generic-lens-1.2.0.1
-  - interpolatedstring-perl6-1.0.2
-  - javascript-bridge-0.2.0
-  - lucid-svg-0.7.1
-  - text-format-0.3.2
   - vinyl-0.12.2
   - monad-bayes-0.1.1.0
+  # - backprop-0.2.6.3
+  - git: https://github.com/tonyday567/backprop
+    commit: 4bdae9d8a548a109129a25370ad7246f36be1923
+  - git: https://github.com/tonyday567/online
+    commit: 122fa34f066957de170029cc0997cabc3e67c53b
+  - git: https://github.com/tonyday567/perf
+    commit: dbbee7f72ea81602c3b710f185f0b6e90d497729
+    subdir: perf
 
 allow-newer: true
