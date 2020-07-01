@@ -4,6 +4,7 @@ packages:
   - .
 
 extra-deps:
+  # numhask pack
   - git: https://github.com/tonyday567/numhask-space
     commit: 6525f5096525196fe367dabdfe596a7bd0c0aa6c
   - git: https://github.com/tonyday567/numhask
@@ -17,6 +18,8 @@ extra-deps:
     subdir: numhask-hedgehog
   - git: https://github.com/tonyday567/numhask-array
     commit: 7f3d74e08c256e7cc846d348784b27e0467b00ec
+
+  # box pack
   - git: https://github.com/tonyday567/box
     commit: d496d333524d5a64a799dd390f4cc98b0d35bb67
   - git: https://github.com/tonyday567/box-csv
@@ -26,24 +29,24 @@ extra-deps:
   - javascript-bridge-0.2.0
   - git: https://github.com/tonyday567/chart-svg
     commit: 25e1e1eae49a588d356d51e5289e339e0975f05b
+  - Color-0.1.4
+
+  # readme-lhs pack
   - git: https://github.com/tonyday567/readme-lhs
-    commit: 36b895ee81aad473131e07ef40ba964765362b00
-  - git: https://github.com/jgm/pandoc
-    commit: cd3941d34e578f2ebd4dd11484fc26c7afae8a6a
+    commit: e2a07bd492073dfed912f214cad61919a70c6fd7
+  - pandoc-2.10
   - hslua-1.1.2
   - jira-wiki-markup-1.3.2
-
-  # external non-stack libraries
-  - Color-0.1.4
-  - vinyl-0.12.2
-  - monad-bayes-0.1.1.0
-  # - backprop-0.2.6.3
-  - git: https://github.com/tonyday567/backprop
-    commit: 4bdae9d8a548a109129a25370ad7246f36be1923
-  - git: https://github.com/tonyday567/online
-    commit: 122fa34f066957de170029cc0997cabc3e67c53b
   - git: https://github.com/tonyday567/perf
-    commit: dbbee7f72ea81602c3b710f185f0b6e90d497729
+    commit: d68a32144810775fbddf541a0f5109843d625809
     subdir: perf
+
+  # online pack
+  - git: https://github.com/tonyday567/online
+    commit: 1bf501b738a3250bbe47ce8962d5188b9911fb99
+  - backprop-0.2.6.4
+  - monad-bayes-0.1.1.0
+  - vinyl-0.12.2
+  # online-market
 
 allow-newer: true
