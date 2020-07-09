@@ -177,5 +177,4 @@ I chisled down my \~/.local/bin to:
 todo
 ----
 
--   move to pandoc-2.10
 -   backprop

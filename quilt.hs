@@ -63,23 +63,13 @@ allDates n (Range (UTCTime l _) (UTCTime u _)) =
   where
     ds = fmap (`addDays` l) (take (fromIntegral $ diffDays u l) [0 ..])
 
--- | the test box is a pure list emitter into an IORef appending list
--- > etc () transducer' box'
--- echo: hi
--- echo: bye
-testBox :: [a] -> IO (Cont IO (Box STM a a), IO [a])
-testBox xs = do
-  (_, c, res) <- cCRef
-  let e = toEmit (S.each xs)
-  pure (Box <$> c <*> e, res)
-
 main :: IO ()
 main = do
   -- Box test
-  (box', res') <- testBox (["hi", "bye", "q", "x"] :: [Text])
+  (c,resM) <- cRef
   let transducer' = Transducer $ \s -> s & S.takeWhile (/= "q") & S.map ("echo: " <>)
-  _ <- etc () transducer' box'
-  res <- res'
+  _ <- etc () transducer' <$.> (Box c <$> fromListE ["hi", "bye", "q", "x"])
+  res <- resM
 
   -- chart-svg
   writeChartExample "other/chart-svg.svg" lineExample
