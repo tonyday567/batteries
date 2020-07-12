@@ -21,15 +21,15 @@ extra-deps:
 
   # box pack
   - git: https://github.com/tonyday567/box
-    commit: 6df3c4542ead135d31d0e1d7d06dcc2052915079
-  - git: https://github.com/tonyday567/box-csv
-    commit: 7d012cdb90c0172bea46e67945505acc2abcf1da
+    commit: c646bd417574366b0c2d5ff529974ad55e202783
+  - git: https://github.com/tonyday567/box-socket
+    commit: c22ff8122f10ca5a709ff1ec73bd80924687271d
   - git: https://github.com/tonyday567/web-rep
-    commit: 3bd6b82c33a80b4f7c785e042839be9d12fab3de
-  - javascript-bridge-0.2.0
+    commit: 6b0c25395538b59bb28edad3fd1b4d69b94477b9
   - git: https://github.com/tonyday567/chart-svg
-    commit: eb6f1647f6d76950c16d76a7a944dcd4e4a8129a
-  - Color-0.1.4
+    commit: a6a6840b9949598a5b3259af881894559745bbb5
+  - git: https://github.com/tonyday567/box-csv
+    commit: 6d953d0731851fca6b7f738f865070334ff2cf99
 
   # readme-lhs pack
   - git: https://github.com/tonyday567/readme-lhs
