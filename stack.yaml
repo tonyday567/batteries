@@ -25,9 +25,9 @@ extra-deps:
   - git: https://github.com/tonyday567/box-socket
     commit: c22ff8122f10ca5a709ff1ec73bd80924687271d
   - git: https://github.com/tonyday567/web-rep
-    commit: 6b0c25395538b59bb28edad3fd1b4d69b94477b9
+    commit: c974e97c1e27d94dffa16ac78cc0d3d72fa745cf
   - git: https://github.com/tonyday567/chart-svg
-    commit: a6a6840b9949598a5b3259af881894559745bbb5
+    commit: 5eca1317ecd4239606cce50936474ce47b7f20e0
   - git: https://github.com/tonyday567/box-csv
     commit: 6d953d0731851fca6b7f738f865070334ff2cf99
 
